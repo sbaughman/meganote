@@ -2,11 +2,8 @@
   'use strict';
 
   angular
-    .module('meganote.notes', [])
-
-    .config(configFunction)
-
-    .controller('NotesController', NotesController);
+    .module('meganote.notes')
+    .config(configFunction);
 
     configFunction.$inject = ['$stateProvider'];
 
@@ -24,9 +21,4 @@
           templateUrl: 'notes/notes-form.html'
         });
     }
-
-    function NotesController($scope) {
-      $scope.message = "I like to party";
-    };
-
 })();
