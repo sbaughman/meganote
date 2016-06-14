@@ -5,9 +5,10 @@
     .module('meganote.notes')
     .controller('NotesController', NotesController);
 
-  NotesController.$inject = ['$scope'];
+  NotesController.$inject = ['$state', '$scope'];
 
-  function NotesController($scope) {
+  function NotesController($state, $scope) {
+    $state.go('notes.form');
     $scope.notes = [];
 
     function Note() {
