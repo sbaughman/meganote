@@ -24,8 +24,9 @@
     /////////////////
 
     function saveNote() {
-      notesService.saveNote(vm.note);
-      resetForm();
+      notesService.saveNote(vm.note).then(function(res) {
+        vm.note = angular.copy(res.data.note);
+      });
     }
 
     function editNote(note) {

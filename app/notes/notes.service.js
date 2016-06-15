@@ -30,9 +30,9 @@
 
     function saveNote(note) {
       if (note._id) {
-        service.updateNote(note);
+        return service.updateNote(note);
       } else {
-        service.createNote(note);
+        return service.createNote(note);
       }
     }
 
@@ -45,17 +45,19 @@
     }
 
     function createNote(note) {
-      $http.post('https://meganote.herokuapp.com/notes', { note: note })
-        .then(function(note) {
-          service.notes.unshift(note.data.note);
-        });
+      var notePromise = $http.post('https://meganote.herokuapp.com/notes', { note: note });
+      notePromise.then(function(note) {
+        service.notes.unshift(note.data.note);
+      });
+      return notePromise;
     }
 
     function updateNote(note) {
-      $http.put('https://meganote.herokuapp.com/notes/' + note._id, { note: note })
-        .then(function() {
-          replaceNote(note);
-        });
+      var notePromise = $http.put('https://meganote.herokuapp.com/notes/' + note._id, { note: note });
+      notePromise.then(function() {
+        replaceNote(note);
+      });
+      return notePromise;
     }
 
     function deleteNote(note) {
