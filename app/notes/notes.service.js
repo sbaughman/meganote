@@ -11,6 +11,7 @@
     var service = {
       notes: [],
       getNotes: getNotes,
+      saveNote: saveNote,
       createNote: createNote,
       updateNote: updateNote,
       deleteNote: deleteNote,
@@ -25,6 +26,14 @@
       this.title = '',
       this.body_html = '',
       this._id = ''
+    }
+
+    function saveNote(note) {
+      if (note._id) {
+        service.updateNote(note);
+      } else {
+        service.createNote(note);
+      }
     }
 
     function getNotes() {
