@@ -20,10 +20,7 @@
       name="commit"
       value="{{ vm.note._id ? 'Update' : 'Save' }}"
       class="btn btn-default">
-    <a class="btn btn-danger"
-      ng-click="vm.deleteNote(vm.note)"
-      ng-show="vm.note._id">
-      Delete
-    </a>
+    <a ng-click="vm.deleteNote(vm.note)"
+      ng-show="vm.note._id"><i class="fa fa-trash-o fa-lg"></i></a>
   </div>
 </form>
