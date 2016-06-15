@@ -14,6 +14,7 @@
           url: '/notes',
           templateUrl: 'notes/notes.html',
           controller: 'NotesController',
+          controllerAs: 'vm'
         })
 
         .state('notes.form', {

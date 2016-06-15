@@ -1,24 +1,29 @@
-<form ng-submit="addNote(note)">
+<form ng-submit="vm.saveOrUpdateNote(note)">
   <p>
     <input
       type="text"
       name="title"
       id="note_title"
       placeholder="Title your note"
-      ng-model="note.title">
+      ng-model="vm.note.title">
   </p>
   <p>
     <textarea
       name="body_html"
       placeholder="Just start typing..."
-      ng-model="note.body"
+      ng-model="vm.note.body_html"
       ></textarea>
   </p>
   <div class="form-actions">
     <input
       type="submit"
       name="commit"
-      value="Save"
+      value="{{ vm.note._id ? 'Update' : 'Save' }}"
       class="btn btn-default">
+    <a class="btn btn-danger"
+      ng-click="vm.deleteNote(vm.note)"
+      ng-show="vm.note._id">
+      Delete
+    </a>
   </div>
 </form>
