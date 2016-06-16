@@ -1,7 +1,8 @@
 (function() {
   var app = angular.module('meganote', [
     'ui.router',
-    'meganote.notes'
+    'meganote.notes',
+    'meganote.core'
   ]);
 
   function config($urlRouterProvider) {

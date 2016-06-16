@@ -5,9 +5,9 @@
     .module('meganote.notes')
     .factory('notesService', notesService);
 
-  notesService.$inject = ['$http'];
+  notesService.$inject = ['$http', 'NOTES_URL'];
 
-  function notesService($http) {
+  function notesService($http, NOTES_URL) {
     var service = {
       notes: [],
       getNotes: getNotes,
@@ -37,7 +37,7 @@
     }
 
     function getNotes() {
-      var notesPromise = $http.get('https://meganote.herokuapp.com/notes');
+      var notesPromise = $http.get(NOTES_URL);
       notesPromise.then(function(res) {
         service.notes = res.data;
       });
@@ -45,7 +45,7 @@
     }
 
     function createNote(note) {
-      var notePromise = $http.post('https://meganote.herokuapp.com/notes', { note: note });
+      var notePromise = $http.post(NOTES_URL, { note: note });
       notePromise.then(function(note) {
         service.notes.unshift(note.data.note);
       });
@@ -53,7 +53,7 @@
     }
 
     function updateNote(note) {
-      var notePromise = $http.put('https://meganote.herokuapp.com/notes/' + note._id, { note: note });
+      var notePromise = $http.put(NOTES_URL + note._id, { note: note });
       notePromise.then(function() {
         replaceNote(note);
       });
@@ -61,7 +61,7 @@
     }
 
     function deleteNote(note) {
-      $http.delete('https://meganote.herokuapp.com/notes/' + note._id, { note: note })
+      $http.delete(NOTES_URL + note._id, { note: note })
         .then(function() {
           removeNote(note);
         });
