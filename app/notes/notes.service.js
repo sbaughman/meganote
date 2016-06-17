@@ -10,6 +10,7 @@
   function notesService($http, NOTES_URL) {
     var service = {
       notes: [],
+      find: find,
       getNotes: getNotes,
       saveNote: saveNote,
       createNote: createNote,
@@ -25,6 +26,14 @@
     function Note() {
       this.title = '',
       this.body_html = ''
+    }
+
+    function find(id) {
+      for (var i = 0; i < service.notes.length; i++) {
+        if (id === service.notes[i]._id) {
+          return angular.copy(service.notes[i]);
+        }
+      }
     }
 
     function saveNote(note) {

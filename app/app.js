@@ -1,6 +1,7 @@
 (function() {
   var app = angular.module('meganote', [
     'ui.router',
+    'textAngular',
     'meganote.notes',
     'meganote.core'
   ]);
