@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4" id="sidebar">
-      <button ng-click="vm.resetForm()" class="new-note btn btn-default">
+      <a ui-sref="notes.form({noteId: note._id})" class="new-note btn btn-default">
         New Note
-      </button>
+      </a>
       <ul id="notes">
         <li ng-repeat="note in vm.notes | orderBy: '-updated_at'">
           <a class="note" ui-sref="notes.form({ noteId: note._id })">

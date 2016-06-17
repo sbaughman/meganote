@@ -5,12 +5,12 @@
     .module('meganote.notes')
     .controller('NotesFormController', NotesFormController);
 
-  NotesFormController.$inject = ['notesService'];
+  NotesFormController.$inject = ['notesService', '$state'];
 
-  function NotesFormController(notesService) {
+  function NotesFormController(notesService, $state) {
     var vm = this;
 
-    vm.note = new notesService.Note();
+    vm.note = notesService.find($state.params.noteId);
     vm.saveNote = saveNote;
     vm.deleteNote = deleteNote;
     vm.resetForm = resetForm;

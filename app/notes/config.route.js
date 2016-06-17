@@ -14,7 +14,10 @@
           url: '/notes',
           templateUrl: 'notes/notes.html',
           controller: 'NotesController',
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          resolve: {
+            notesLoaded: notesLoaded
+          }
         })
 
         .state('notes.form', {
@@ -23,5 +26,11 @@
           controller: 'NotesFormController',
           controllerAs: 'vm'
         });
+    }
+
+    notesLoaded.$inject = ['notesService'];
+
+    function notesLoaded(notesService) {
+      return notesService.getNotes();
     }
 })();
