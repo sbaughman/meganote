@@ -24,8 +24,7 @@
 
     function Note() {
       this.title = '',
-      this.body_html = '',
-      this._id = ''
+      this.body_html = ''
     }
 
     function saveNote(note) {
@@ -54,8 +53,8 @@
 
     function updateNote(note) {
       var notePromise = $http.put(NOTES_URL + note._id, { note: note });
-      notePromise.then(function() {
-        replaceNote(note);
+      notePromise.then(function(updated_note) {
+        replaceNote(updated_note.data.note);
       });
       return notePromise;
     }

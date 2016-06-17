@@ -3,5 +3,5 @@
 
   angular
     .module('meganote.core')
-    .constant('NOTES_URL', 'https://meganote.herokuapp.com/notes/');
+    .constant('NOTES_URL', 'http://localhost:3030/notes/');
 })();

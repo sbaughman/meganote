@@ -5,7 +5,7 @@
         New Note
       </button>
       <ul id="notes">
-        <li ng-repeat="note in vm.notes | orderBy: 'updated_at'" ng-click="vm.editNote(note)">
+        <li ng-repeat="note in vm.notes | orderBy: '-updated_at'" ng-click="vm.editNote(note)">
           <div class="note-title">{{ note.title }}</div>
           <div class="note-body">{{ note.body_html }}</div>
         </li>
