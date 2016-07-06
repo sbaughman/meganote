@@ -7,6 +7,8 @@
   var sourcemaps = require('gulp-sourcemaps');
   var babel = require('gulp-babel');
   var connect = require('gulp-connect');
+  var order = require('gulp-order');
+  var print = require('gulp-print');
 
   gulp.task('bundle', bundle);
   gulp.task('start-webserver', startWebServer);
@@ -26,6 +28,11 @@
       .pipe(plumber())              // restart gulp on error
       .pipe(sourcemaps.init())      // let sourcemap watch this pipeline
       .pipe(babel())                // transpile into ES5
+      .pipe(order([
+        'app/**/*.module.js',
+        'app/**/*.js',
+      ], { base: './' }))           // order the files before concatenation
+      .pipe(print())                // print files to the console
       .pipe(concat('bundle.js'))    // concatenate all JS files
       .pipe(sourcemaps.write('.'))  // emits sourcemap bundle.js.map for debug
       .pipe(gulp.dest('app/content')) // save bundle.js and bundle.js.map

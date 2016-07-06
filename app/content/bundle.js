@@ -1,4 +1,19 @@
 (function () {
+  'use strict';
+
+  angular.module('meganote.core', []);
+})();
+(function () {
+  'use strict';
+
+  angular.module('meganote.notes', []);
+})();
+(function () {
+  'use strict';
+
+  angular.module('meganote.signUp', []);
+})();
+(function () {
   var app = angular.module('meganote', ['ui.router', 'textAngular', 'meganote.notes', 'meganote.core']);
 
   function config($urlRouterProvider) {
@@ -12,11 +27,6 @@
   'use strict';
 
   angular.module('meganote.core').constant('NOTES_URL', 'http://localhost:3030/notes/');
-})();
-(function () {
-  'use strict';
-
-  angular.module('meganote.core', []);
 })();
 (function () {
   'use strict';
@@ -60,11 +70,6 @@
 
     vm.notes = notesService.notes;
   }
-})();
-(function () {
-  'use strict';
-
-  angular.module('meganote.notes', []);
 })();
 (function () {
   'use strict';
@@ -194,10 +199,5 @@
   angular.module('meganote.signUp').directive('sbSignUp', sbSignUp);
 
   function sbSignUp() {}
-})();
-(function () {
-  'use strict';
-
-  angular.module('meganote.signUp', []);
 })();
 //# sourceMappingURL=bundle.js.map
