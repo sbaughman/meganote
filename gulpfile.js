@@ -23,6 +23,7 @@
       .pipe(plugins.sourcemaps.init())      // let sourcemap watch this pipeline
       .pipe(plugins.babel())                // transpile into ES5
       .pipe(plugins.order([
+        'app/app.module.js',
         'app/**/*.module.js',
         'app/**/*.js',
       ], { base: './' }))                   // order the files before concatenation
