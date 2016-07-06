@@ -21,18 +21,6 @@
 (function () {
   'use strict';
 
-  angular.module('meganote.signUp').directive('sbSignUp', sbSignUp);
-
-  function sbSignUp() {}
-})();
-(function () {
-  'use strict';
-
-  angular.module('meganote.signUp', []);
-})();
-(function () {
-  'use strict';
-
   angular.module('meganote.notes').config(configFunction);
 
   configFunction.$inject = ['$stateProvider'];
@@ -199,5 +187,17 @@
       $state.go('notes.form', { noteId: undefined });
     }
   }
+})();
+(function () {
+  'use strict';
+
+  angular.module('meganote.signUp').directive('sbSignUp', sbSignUp);
+
+  function sbSignUp() {}
+})();
+(function () {
+  'use strict';
+
+  angular.module('meganote.signUp', []);
 })();
 //# sourceMappingURL=bundle.js.map
