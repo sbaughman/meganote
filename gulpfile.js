@@ -2,13 +2,7 @@
   'use strict';
 
   var gulp = require('gulp');
-  var concat = require('gulp-concat');
-  var plumber = require('gulp-plumber');
-  var sourcemaps = require('gulp-sourcemaps');
-  var babel = require('gulp-babel');
-  var connect = require('gulp-connect');
-  var order = require('gulp-order');
-  var print = require('gulp-print');
+  var plugins = require('gulp-load-plugins')();
 
   gulp.task('bundle', bundle);
   gulp.task('start-webserver', startWebServer);
@@ -25,21 +19,21 @@
 
   function bundle() {
     return gulp.src(jsFiles)
-      .pipe(plumber())              // restart gulp on error
-      .pipe(sourcemaps.init())      // let sourcemap watch this pipeline
-      .pipe(babel())                // transpile into ES5
-      .pipe(order([
+      .pipe(plugins.plumber())              // restart gulp on error
+      .pipe(plugins.sourcemaps.init())      // let sourcemap watch this pipeline
+      .pipe(plugins.babel())                // transpile into ES5
+      .pipe(plugins.order([
         'app/**/*.module.js',
         'app/**/*.js',
-      ], { base: './' }))           // order the files before concatenation
-      .pipe(print())                // print files to the console
-      .pipe(concat('bundle.js'))    // concatenate all JS files
-      .pipe(sourcemaps.write('.'))  // emits sourcemap bundle.js.map for debug
-      .pipe(gulp.dest('app/content')) // save bundle.js and bundle.js.map
+      ], { base: './' }))                   // order the files before concatenation
+      .pipe(plugins.print())                // print files to the console
+      .pipe(plugins.concat('bundle.js'))    // concatenate all JS files
+      .pipe(plugins.sourcemaps.write('.'))  // emits sourcemap bundle.js.map for debug
+      .pipe(gulp.dest('app/content'))       // save bundle.js and bundle.js.map
   }
 
   function startWebServer() {
-    connect.server({ root: 'app' });
+    plugins.connect.server({ root: 'app' });
   }
 
   function watch() {
