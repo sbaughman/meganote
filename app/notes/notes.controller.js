@@ -11,11 +11,6 @@
     var vm = this;
 
     vm.notes = notesService.notes;
-    vm.resetForm = resetForm;
-
-    function resetForm() {
-      vm.note = new notesService.Note();
-    }
   }
 
 })();
