@@ -13,25 +13,20 @@
     vm.note = notesService.find($state.params.noteId);
     vm.saveNote = saveNote;
     vm.deleteNote = deleteNote;
-    vm.resetForm = resetForm;
 
     /////////////////
 
     function saveNote() {
       notesService.saveNote(vm.note).then(function(res) {
         vm.note = angular.copy(res.data.note);
+        $state.go('notes.form', { noteId: vm.note._id });
       });
     }
 
     function deleteNote(note) {
       notesService.deleteNote(note);
-      resetForm();
+      $state.go('notes.form', { noteId: undefined });
     }
-
-    function resetForm() {
-      vm.note = new notesService.Note();
-    }
-
   }
 
 })();
