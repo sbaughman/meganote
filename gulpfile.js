@@ -34,7 +34,10 @@
   }
 
   function startWebServer() {
-    plugins.connect.server({ root: 'app' });
+    plugins.connect.server({
+      root: 'app',
+      port: 8000
+    });
   }
 
   function watch() {
