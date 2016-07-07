@@ -15,10 +15,13 @@
     /////////////////
 
     function saveNote() {
-      notesService.saveNote(vm.note).then(function(res) {
-        vm.note = angular.copy(res.data.note);
-        $state.go('notes.form', { noteId: vm.note._id });
-      });
+      notesService.saveNote(vm.note)
+        .then(
+          res => {
+            vm.note = angular.copy(res.data.note);
+            $state.go('notes.form', { noteId: vm.note._id });
+          }
+        );
     }
 
     function deleteNote(note) {

@@ -44,33 +44,25 @@
 
     function getNotes() {
       const notesPromise = $http.get(NOTES_URL);
-      notesPromise.then(function(res) {
-        service.notes = res.data;
-      });
+      notesPromise.then((res) => { service.notes = res.data });
       return notesPromise;
     }
 
     function createNote(note) {
       const notePromise = $http.post(NOTES_URL, { note: note });
-      notePromise.then(function(note) {
-        service.notes.unshift(note.data.note);
-      });
+      notePromise.then((note) => { service.notes.unshift(note.data.note) });
       return notePromise;
     }
 
     function updateNote(note) {
       const notePromise = $http.put(NOTES_URL + note._id, { note: note });
-      notePromise.then(function(updated_note) {
-        replaceNote(updated_note.data.note);
-      });
+      notePromise.then((updated_note) => { replaceNote(updated_note.data.note)});
       return notePromise;
     }
 
     function deleteNote(note) {
       $http.delete(NOTES_URL + note._id, { note: note })
-        .then(function() {
-          removeNote(note);
-        });
+        .then(() => { removeNote(note) });
     }
 
     function replaceNote(note) {
