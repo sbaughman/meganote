@@ -1,6 +1,4 @@
-(function() {
-  'use strict';
-
+{
   angular
     .module('meganote.notes')
     .controller('NotesFormController', NotesFormController);
@@ -8,7 +6,7 @@
   NotesFormController.$inject = ['notesService', '$state'];
 
   function NotesFormController(notesService, $state) {
-    var vm = this;
+    let vm = this;
 
     vm.note = notesService.find($state.params.noteId);
     vm.saveNote = saveNote;
@@ -28,5 +26,4 @@
       $state.go('notes.form', { noteId: undefined });
     }
   }
-
-})();
+}

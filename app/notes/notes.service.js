@@ -1,6 +1,4 @@
-(function() {
-  'use strict';
-
+{
   angular
     .module('meganote.notes')
     .factory('notesService', notesService);
@@ -8,7 +6,7 @@
   notesService.$inject = ['$http', 'NOTES_URL'];
 
   function notesService($http, NOTES_URL) {
-    var service = {
+    let service = {
       notes: [],
       find: find,
       getNotes: getNotes,
@@ -29,7 +27,7 @@
     }
 
     function find(id) {
-      for (var i = 0; i < service.notes.length; i++) {
+      for (let i = 0; i < service.notes.length; i++) {
         if (id === service.notes[i]._id) {
           return angular.copy(service.notes[i]);
         }
@@ -45,7 +43,7 @@
     }
 
     function getNotes() {
-      var notesPromise = $http.get(NOTES_URL);
+      let notesPromise = $http.get(NOTES_URL);
       notesPromise.then(function(res) {
         service.notes = res.data;
       });
@@ -53,7 +51,7 @@
     }
 
     function createNote(note) {
-      var notePromise = $http.post(NOTES_URL, { note: note });
+      let notePromise = $http.post(NOTES_URL, { note: note });
       notePromise.then(function(note) {
         service.notes.unshift(note.data.note);
       });
@@ -61,7 +59,7 @@
     }
 
     function updateNote(note) {
-      var notePromise = $http.put(NOTES_URL + note._id, { note: note });
+      let notePromise = $http.put(NOTES_URL + note._id, { note: note });
       notePromise.then(function(updated_note) {
         replaceNote(updated_note.data.note);
       });
@@ -76,7 +74,7 @@
     }
 
     function replaceNote(note) {
-      for (var i = 0; i < service.notes.length; i++) {
+      for (let i = 0; i < service.notes.length; i++) {
         if (note._id === service.notes[i]._id) {
           service.notes.splice(i, 1);
           service.notes.unshift(note);
@@ -86,13 +84,12 @@
     }
 
     function removeNote(note){
-      for (var i = 0; i < service.notes.length; i++) {
+      for (let i = 0; i < service.notes.length; i++) {
         if (note._id === service.notes[i]._id) {
           service.notes.splice(i, 1);
           break;
         }
       }
     }
-
   }
-})();
+}

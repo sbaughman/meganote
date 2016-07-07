@@ -1,4 +1,4 @@
-(function() {
+{
   angular.module('meganote', [
     'ui.router',
     'textAngular',
@@ -14,9 +14,12 @@
     $urlRouterProvider.otherwise('/notes/');
   }
 
-  runFunction.$inject = ['$state'];
+  runFunction.$inject = ['$rootScope', '$state'];
 
-  function runFunction($state) {
-    
+  function runFunction($rootScope, $state) {
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+      $state.current = toState;
+      console.log($state.current.name);
+    });
   }
-})();
+}

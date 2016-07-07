@@ -1,7 +1,4 @@
-(function() {
-  'use strict';
-
+{
   angular
-    .module('meganote.notes', []);
-    
-})();
+    .module('meganote.notes', []);  
+}
