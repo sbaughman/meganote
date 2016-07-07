@@ -21,7 +21,9 @@
     return gulp.src(jsFiles)
       .pipe(plugins.plumber())              // restart gulp on error
       .pipe(plugins.sourcemaps.init())      // let sourcemap watch this pipeline
-      .pipe(plugins.babel())                // transpile into ES5
+      .pipe(plugins.babel({
+        presets: ['es2015']
+      }))                // transpile into ES5
       .pipe(plugins.order([
         'app/app.module.js',
         'app/**/*.module.js',
