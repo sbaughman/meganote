@@ -1,15 +1,22 @@
 (function() {
-  var app = angular.module('meganote', [
+  angular.module('meganote', [
     'ui.router',
     'textAngular',
     'meganote.notes',
     'meganote.core'
-  ]);
+  ])
+  .config(configFunction)
+  .run(runFunction);
 
-  function config($urlRouterProvider) {
+  configFunction.$inject = ['$urlRouterProvider'];
+
+  function configFunction($urlRouterProvider) {
     $urlRouterProvider.otherwise('/notes/');
   }
 
-  config.$inject = ['$urlRouterProvider'];
-  app.config(config);
+  runFunction.$inject = ['$state'];
+
+  function runFunction($state) {
+    
+  }
 })();
