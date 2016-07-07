@@ -5,11 +5,14 @@
 
       class UsersService {
         create(user) {
-          $http.post(${API_BASE}users, {
+          return $http.post(`${API_BASE}users`, {
             user
           })
-            .then((user) => {
-                console.log(user);
+            .then((returned_user) => {
+              console.log(returned_user);
+            })
+            .catch((error) => {
+              console.log(error);
             });
         }
       }
