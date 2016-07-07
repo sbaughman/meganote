@@ -4,6 +4,6 @@
     .directive('sbSignUp', sbSignUp);
 
   function sbSignUp() {
-
+    
   }
 }

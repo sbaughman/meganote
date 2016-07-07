@@ -3,7 +3,9 @@
     'ui.router',
     'textAngular',
     'meganote.notes',
-    'meganote.core'
+    'meganote.core',
+    'meganote.users',
+    'meganote.signUp',
   ])
   .config(configFunction)
   .run(runFunction);
