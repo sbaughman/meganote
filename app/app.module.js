@@ -18,8 +18,7 @@
 
   function runFunction($rootScope, $state) {
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-      $state.current = toState;
-      console.log($state.current.name);
+      $rootScope.$state = $state;
     });
   }
 }
