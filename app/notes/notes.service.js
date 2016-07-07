@@ -6,7 +6,7 @@
   notesService.$inject = ['$http', 'NOTES_URL'];
 
   function notesService($http, NOTES_URL) {
-    let service = {
+    const service = {
       notes: [],
       find: find,
       getNotes: getNotes,
@@ -43,7 +43,7 @@
     }
 
     function getNotes() {
-      let notesPromise = $http.get(NOTES_URL);
+      const notesPromise = $http.get(NOTES_URL);
       notesPromise.then(function(res) {
         service.notes = res.data;
       });
@@ -51,7 +51,7 @@
     }
 
     function createNote(note) {
-      let notePromise = $http.post(NOTES_URL, { note: note });
+      const notePromise = $http.post(NOTES_URL, { note: note });
       notePromise.then(function(note) {
         service.notes.unshift(note.data.note);
       });
@@ -59,7 +59,7 @@
     }
 
     function updateNote(note) {
-      let notePromise = $http.put(NOTES_URL + note._id, { note: note });
+      const notePromise = $http.put(NOTES_URL + note._id, { note: note });
       notePromise.then(function(updated_note) {
         replaceNote(updated_note.data.note);
       });

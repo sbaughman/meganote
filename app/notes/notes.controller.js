@@ -6,7 +6,7 @@
   NotesController.$inject = ['notesService'];
 
   function NotesController(notesService) {
-    let vm = this;
+    const vm = this;
 
     vm.notes = notesService.notes;
   }
