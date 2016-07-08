@@ -23,7 +23,7 @@
       .pipe(plugins.sourcemaps.init())      // let sourcemap watch this pipeline
       .pipe(plugins.babel({
         presets: ['es2015']
-      }))                // transpile into ES5
+      }))                                   // transpile into ES5
       .pipe(plugins.order([
         'app/app.module.js',
         'app/**/*.module.js',

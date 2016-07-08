@@ -3,9 +3,11 @@
     .module('meganote.notes')
     .factory('notesService', notesService);
 
-  notesService.$inject = ['$http', 'NOTES_URL'];
+  notesService.$inject = ['$http', 'API_BASE'];
 
-  function notesService($http, NOTES_URL) {
+  function notesService($http, API_BASE) {
+    const NOTES_URL = `${API_BASE}notes/`;
+
     const service = {
       notes: [],
       find: find,
