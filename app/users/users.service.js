@@ -1,7 +1,7 @@
 {
   angular
     .module('meganote.users')
-    .service('UsersService', ['$http', 'API_BASE', 'AuthToken', ($http, API_BASE, AuthToken) => {
+    .service('UsersService', ['$http', 'API_BASE', 'AuthToken', 'CurrentUser', ($http, API_BASE, AuthToken, CurrentUser) => {
 
       const USERS_URL = `${API_BASE}users/`;
 
@@ -14,7 +14,7 @@
           })
             .then((res) => {
               AuthToken.set(res.data.authToken);
-              console.log(`Gotten: ${AuthToken.get()}`);
+              CurrentUser.set(res.data.user);
             })
             .catch((error) => {
               console.log(error);
