@@ -29,7 +29,9 @@
           template: `
             <div class="user-links">
               <span ng-show="vm.signedIn()">
-                Signed in as {{ vm.user().name }}
+                <a class="profile" ui-sref="user-profile">
+                  Signed in as {{ vm.user().name }}
+                </a>
                 |
                 <a ui-sref="sign-up" ng-click="vm.logout()">Log out</a>
               </span>

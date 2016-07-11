@@ -108,3 +108,7 @@ span.login {
 
 .ta-editor {
   margin-top: 0.5em; }
+
+a.profile {
+  color: #ccc;
+}
