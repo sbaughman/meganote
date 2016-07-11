@@ -20,6 +20,16 @@
               console.log(error);
             });
         }
+
+        // Update user profile
+        update(user) {
+          return $http.put(`${USERS_URL}${user._id}`, {
+            user
+          })
+          .then((res) => {
+            CurrentUser.set(res.data.user);
+          });
+        }
       }
 
       return new UsersService();

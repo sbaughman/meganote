@@ -4,15 +4,16 @@
     .directive('userProfile', [
 
       'CurrentUser',
+      'UsersService',
 
-      (CurrentUser) => {
+      (CurrentUser, UsersService) => {
 
         class UserProfileController {
           constructor() {
             this.user = CurrentUser.get();
           }
           submit() {
-            console.log('Success!');
+            UsersService.update(this.user);
           }
         }
 
