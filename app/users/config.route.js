@@ -9,7 +9,11 @@
     $stateProvider
       .state('sign-up', {
         url: '/sign-up',
-        template: '<sb-sign-up></sb-sign-up>'
+        template: '<sign-up></sign-up>'
+      })
+      .state('user-profile', {
+        url: '/profile',
+        template: '<user-profile></user-profile>'
       });
   }
 }
