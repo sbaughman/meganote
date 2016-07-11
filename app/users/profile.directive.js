@@ -10,7 +10,7 @@
 
         class UserProfileController {
           constructor() {
-            this.user = CurrentUser.get();
+            this.user = angular.copy(CurrentUser.get());
           }
           submit() {
             UsersService.update(this.user);
