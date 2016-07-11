@@ -6,6 +6,7 @@
     'meganote.core',
     'meganote.users',
     'meganote.signUp',
+    'meganote.signIn',
   ])
   .config(configFunction)
   .run(runFunction);
