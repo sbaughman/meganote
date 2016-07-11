@@ -8,8 +8,11 @@
       (CurrentUser) => {
 
         class UserLinksController {
-          constructor() {
-
+          user() {
+            return CurrentUser.get();
+          }
+          signedIn() {
+            return CurrentUser.signedIn();
           }
         }
 
@@ -19,8 +22,8 @@
           controllerAs: 'vm',
           bindToController: true,
           template: `
-            <div class="user-links">
-              ** USER LINKS**
+            <div class="user-links" ng-show="vm.signedIn()">
+              Signed in as {{ vm.user().name }}
             </div>`,
         };
     }]);
