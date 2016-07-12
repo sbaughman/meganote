@@ -50,6 +50,11 @@
                     name="commit"
                     value="Save Changes"
                     class="btn btn-default">
+                  <span class="login">
+                    <a ui-sref="notes.form({ noteId: undefined })">
+                      Back to Notes
+                    </a>
+                  </span>
                 </form>
               </div>
             </div>
