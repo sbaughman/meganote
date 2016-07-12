@@ -4,6 +4,7 @@
     .service('UsersService', ['$http', 'API_BASE', 'AuthToken', 'CurrentUser', ($http, API_BASE, AuthToken, CurrentUser) => {
 
       const USERS_URL = `${API_BASE}users/`;
+      const SESSIONS_URL = `${API_BASE}sessions/`;
 
       class UsersService {
 
@@ -28,6 +29,21 @@
           })
           .then((res) => {
             CurrentUser.set(res.data.user);
+          });
+        }
+
+        // Log in
+        login(user) {
+          return $http.post(`${SESSIONS_URL}`, {
+            user
+          })
+          .then((res) => {
+            console.log(res);
+            AuthToken.set(res.data.authToken);
+            CurrentUser.set(res.data.user);
+          },
+          (error) => {
+            console.log(error);
           });
         }
       }

@@ -3,11 +3,23 @@
     .module('meganote.signIn')
     .directive('signIn', [
 
-      () => {
+      '$state',
+      'UsersService',
+
+      ($state, UsersService) => {
 
         class SignInController {
           submit() {
-            console.log('submitted');
+            UsersService.login(this.user)
+              .then(
+                (data) => {
+                  console.log(data);
+                  $state.go('notes.form', {noteId: undefined});
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
           }
         }
 
