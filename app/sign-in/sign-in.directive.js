@@ -13,7 +13,6 @@
             UsersService.login(this.user)
               .then(
                 (data) => {
-                  console.log(data);
                   $state.go('notes.form', {noteId: undefined});
                 },
                 (error) => {

@@ -38,7 +38,6 @@
             user
           })
           .then((res) => {
-            console.log(res);
             AuthToken.set(res.data.authToken);
             CurrentUser.set(res.data.user);
           },
