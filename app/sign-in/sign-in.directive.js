@@ -33,15 +33,6 @@
                 <h3>Welcome Back!</h3>
                 <form id="new_user" ng-submit="vm.submit()">
                   <p>
-                    <label for="name">Full Name</label><br>
-                    <input
-                      type="text"
-                      name="name"
-                      autofocus="autofocus"
-                      ng-model="vm.user.name"
-                      required>
-                  </p>
-                  <p>
                     <label for="username">Username</label><br>
                     <input
                       type="text"
