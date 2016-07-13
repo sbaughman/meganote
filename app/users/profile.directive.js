@@ -3,17 +3,24 @@
     .module('meganote.users')
     .directive('userProfile', [
 
+      'Flash',
       'CurrentUser',
       'UsersService',
 
-      (CurrentUser, UsersService) => {
+      (Flash, CurrentUser, UsersService) => {
 
         class UserProfileController {
           constructor() {
             this.user = angular.copy(CurrentUser.get());
           }
           submit() {
-            UsersService.update(this.user);
+            UsersService.update(this.user)
+              .then(res => {
+                Flash.create('success', res.data.message);
+              },
+              err => {
+                Flash.create('danger', res.data.error);
+              });
           }
         }
 
@@ -56,6 +63,12 @@
                     </a>
                   </span>
                 </form>
+              </div>
+              <div id="flash">
+                <flash-message
+                  duration="5000"
+                  show-close="true">
+                </flash-message>
               </div>
             </div>
           </div>
