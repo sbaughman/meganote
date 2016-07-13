@@ -63,12 +63,12 @@
                     </a>
                   </span>
                 </form>
-              </div>
-              <div id="flash">
-                <flash-message
-                  duration="5000"
-                  show-close="true">
-                </flash-message>
+                <div id="flash">
+                  <flash-message
+                    duration="5000"
+                    show-close="true">
+                  </flash-message>
+                </div>
               </div>
             </div>
           </div>
