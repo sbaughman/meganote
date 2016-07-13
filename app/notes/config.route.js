@@ -15,14 +15,20 @@
           controllerAs: 'vm',
           resolve: {
             notesLoaded: notesLoaded
-          }
+          },
+          data: {
+            title:  'Notes'
+          },
         })
 
         .state('notes.form', {
           url: '/:noteId',
           templateUrl: 'notes/notes-form.html',
           controller: 'NotesFormController',
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          data: {
+            title:  'Notes'
+          },
         });
     }
 
