@@ -2,6 +2,7 @@
   angular.module('meganote', [
     'ui.router',
     'textAngular',
+    'ngFlash',
     'meganote.notes',
     'meganote.core',
     'meganote.users',
