@@ -63,8 +63,9 @@
     }
 
     function deleteNote(note) {
-      $http.delete(NOTES_URL + note._id, { note: note })
-        .then(() => { removeNote(note) });
+      const notePromise = $http.delete(NOTES_URL + note._id, { note: note });
+      notePromise.then(() => { removeNote(note) });
+      return notePromise;
     }
 
     function replaceNote(note) {
