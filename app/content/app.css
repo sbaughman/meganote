@@ -112,3 +112,7 @@ span.login {
 a.profile {
   color: #ccc;
 }
+
+#flash {
+  margin-top: 10px;
+}
