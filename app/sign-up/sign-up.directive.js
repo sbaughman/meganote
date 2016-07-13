@@ -15,19 +15,16 @@
           }
           submit() {
             UsersService.create(this.user)
-              .then(
-                () => {
-                  $state.go('notes.form', {noteId: undefined});
-                },
-                (err) => {
-                  console.log(err);
-                  let errors = '';
-                  for (let error of err.data.errors) {
-                    errors += `<li>${error}</li>`
-                  }
-                  Flash.create('danger', `<ul>${errors}</ul>` )
+              .then(() => {
+                $state.go('notes.form', {noteId: undefined});
+              })
+              .catch(err => {
+                let errors = '';
+                for (let error of err.data.errors) {
+                  errors += `<li>${error}</li>`
                 }
-              );
+                Flash.create('danger', `<ul>${errors}</ul>` )
+              });
           }
         }
 
