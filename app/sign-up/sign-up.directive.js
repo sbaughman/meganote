@@ -4,9 +4,10 @@
     .directive('signUp', [
 
       '$state',
+      'Flash',
       'UsersService',
 
-      ($state, UsersService) => {
+      ($state, Flash, UsersService) => {
 
         class SignUpController {
           constructor() {
@@ -17,6 +18,14 @@
               .then(
                 () => {
                   $state.go('notes.form', {noteId: undefined});
+                },
+                (err) => {
+                  console.log(err);
+                  let errors = '';
+                  for (let error of err.data.errors) {
+                    errors += `<li>${error}</li>`
+                  }
+                  Flash.create('danger', `<ul>${errors}</ul>` )
                 }
               );
           }
