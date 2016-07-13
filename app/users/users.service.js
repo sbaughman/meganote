@@ -10,40 +10,31 @@
 
         // Sign up
         create(user) {
-          return $http.post(USERS_URL, {
-            user
-          })
-            .then((res) => {
-              AuthToken.set(res.data.authToken);
-              CurrentUser.set(res.data.user);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+          var userPromise = $http.post(USERS_URL, {user});
+          userPromise.then((res) => {
+            AuthToken.set(res.data.authToken);
+            CurrentUser.set(res.data.user);
+          });
+          return userPromise;
         }
 
         // Update user profile
         update(user) {
-          return $http.put(`${USERS_URL}${user._id}`, {
-            user
-          })
-          .then((res) => {
+          var userPromise = $http.put(`${USERS_URL}${user._id}`, {user});
+          userPromise.then((res) => {
             CurrentUser.set(res.data.user);
           });
+          return userPromise;
         }
 
         // Log in
         login(user) {
-          return $http.post(`${SESSIONS_URL}`, {
-            user
-          })
-          .then((res) => {
+          var userPromise = $http.post(`${SESSIONS_URL}`, {user});
+          userPromise.then((res) => {
             AuthToken.set(res.data.authToken);
             CurrentUser.set(res.data.user);
-          },
-          (error) => {
-            console.log(error);
           });
+          return userPromise;
         }
       }
 
