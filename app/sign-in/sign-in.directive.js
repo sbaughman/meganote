@@ -4,21 +4,20 @@
     .directive('signIn', [
 
       '$state',
+      'Flash',
       'UsersService',
 
-      ($state, UsersService) => {
+      ($state, Flash, UsersService) => {
 
         class SignInController {
           submit() {
             UsersService.login(this.user)
-              .then(
-                (data) => {
-                  $state.go('notes.form', {noteId: undefined});
-                },
-                (error) => {
-                  console.log(error);
-                }
-              );
+              .then(data => {
+                $state.go('notes.form', {noteId: undefined});
+              })
+              .catch(err => {
+                Flash.create('danger', err.data.error);
+              });
           }
         }
 
@@ -58,6 +57,12 @@
                     <a ui-sref="sign-up">Sign up.</a>
                   </span>
                 </form>
+                <div id="flash">
+                  <flash-message
+                    duration="5000"
+                    show-close="true">
+                  </flash-message>
+                </div>
               </div>
             </div>
           </div>
