@@ -3,12 +3,12 @@
     .module('meganote.notes')
     .controller('NotesFormController', NotesFormController);
 
-  NotesFormController.$inject = ['Flash', 'notesService', '$state'];
+  NotesFormController.$inject = ['Flash', 'notesService', '$state', 'errorsService'];
 
-  function NotesFormController(Flash, notesService, $state) {
+  function NotesFormController(Flash, notesService, $state, errorsService) {
     const vm = this;
 
-    vm.note = notesService.find($state.params.noteId);
+    vm.note = notesService.find($state.params.noteId) || {};
     vm.saveNote = saveNote;
     vm.deleteNote = deleteNote;
 
@@ -22,7 +22,8 @@
           $state.go('notes.form', { noteId: vm.note._id });
         },
         err => {
-          Flash.create('danger', err.error);
+          console.log(err)
+          Flash.create('danger', errorsService.render(err));
         });
     }
 
@@ -33,7 +34,7 @@
           $state.go('notes.form', { noteId: undefined });
         },
         err => {
-          Flash.create('danger', err.error);
+          Flash.create('danger', errorsService.render(err));
         });
     }
   }

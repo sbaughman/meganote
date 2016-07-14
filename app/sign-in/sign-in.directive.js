@@ -6,8 +6,9 @@
       '$state',
       'Flash',
       'UsersService',
+      'errorsService',
 
-      ($state, Flash, UsersService) => {
+      ($state, Flash, UsersService, errorsService) => {
 
         class SignInController {
           submit() {
@@ -16,7 +17,7 @@
                 $state.go('notes.form', {noteId: undefined});
               })
               .catch(err => {
-                Flash.create('danger', err.data.error);
+                Flash.create('danger', errorsService.render(err));
               });
           }
         }
@@ -30,7 +31,7 @@
             <div class="row">
               <div class="col-xs-6 col-xs-offset-4">
                 <h3>Welcome Back!</h3>
-                <form id="new_user" ng-submit="vm.submit()">
+                <form id="new_user" ng-submit="vm.submit()" novalidate>
                   <p>
                     <label for="username">Username</label><br>
                     <input
