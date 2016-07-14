@@ -33,7 +33,7 @@
                   Signed in as {{ vm.user().name }}
                 </a>
                 |
-                <a ui-sref="sign-up" ng-click="vm.logout()">Log out</a>
+                <a ui-sref="sign-in" ng-click="vm.logout()">Log out</a>
               </span>
               <span ng-hide="vm.signedIn()">
                 <a ui-sref="sign-up">Sign up for Meganote today!</a>
