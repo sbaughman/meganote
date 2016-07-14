@@ -21,8 +21,12 @@
   runFunction.$inject = ['$rootScope', '$state'];
 
   function runFunction($rootScope, $state) {
-    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+    $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
       $rootScope.$state = $state;
+    });
+
+    $rootScope.$on('$stateChangeError', () => {
+      $state.go('sign-in');
     });
   }
 }
