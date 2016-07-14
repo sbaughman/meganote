@@ -6,8 +6,9 @@
       '$state',
       'Flash',
       'UsersService',
+      'errorsService',
 
-      ($state, Flash, UsersService) => {
+      ($state, Flash, UsersService, errorsService) => {
 
         class SignUpController {
           constructor() {
@@ -19,11 +20,7 @@
                 $state.go('notes.form', {noteId: undefined});
               })
               .catch(err => {
-                let errors = '';
-                for (let error of err.data.errors) {
-                  errors += `<li>${error}</li>`
-                }
-                Flash.create('danger', `<ul>${errors}</ul>` )
+                Flash.create('danger', errorsService.render(err) )
               });
           }
         }
