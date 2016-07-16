@@ -22,7 +22,6 @@
           $state.go('notes.form', { noteId: vm.note._id });
         },
         err => {
-          console.log(err)
           Flash.create('danger', errorsService.render(err));
         });
     }
